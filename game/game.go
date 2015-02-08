@@ -11,7 +11,7 @@ import (
     "strings"
     "time"
 
-    "github.com/th4t/mwdns/utils"
+    "../utils"
 )
 
 const (

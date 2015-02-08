@@ -11,8 +11,8 @@ import (
     "strconv"
     "time"
 
-    "github.com/th4t/mwdns/game"
-    "github.com/th4t/mwdns/utils"
+    "./game"
+    "./utils"
 )
 
 const (
