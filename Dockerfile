@@ -1,7 +1,7 @@
 FROM golang:1.3-onbuild
 
-RUN apt-get update && \
-    apt-get install npm && \
+RUN apt-get update -qq && \
+    apt-get install -qqy npm && \
     npm install -g less uglify-js && \
     rm -rf /var/lib/apt/lists/*
 
