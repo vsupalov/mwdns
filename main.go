@@ -17,7 +17,7 @@ import (
 
 const (
     DEV_MODE            = false //whether development is currently going on - constant template reload
-    MIN_RES             = true //whether minified js/less resources shall be linked in the templates
+    MIN_RES             = false //whether minified js/less resources shall be linked in the templates
 
     DEFAULT_PAIR_COUNT  = 10
     DEFAULT_GAME_TYPE   = game.GAME_TYPE_CLASSIC
