@@ -1,0 +1,6 @@
+mwdns:
+  image: th4t/mwdns
+  hostname: pairsgame
+  domainname: pairsga.me
+  ports:
+    - "8090:8000"
