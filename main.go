@@ -11,8 +11,8 @@ import (
     "strconv"
     "time"
 
-    "github.com/lucasb-eyer/mwdns/game"
-    "github.com/lucasb-eyer/mwdns/utils"
+    "github.com/th4t/mwdns/game"
+    "github.com/th4t/mwdns/utils"
 )
 
 const (
