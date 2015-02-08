@@ -6,6 +6,12 @@ JS_FILES=$(wildcard ${JS_DIR}/*.js)
 
 all: less js
 
+docker_build:
+	docker build -t th4t/mwdns .
+
+docker_run:
+	docker run -it --rm --name mwdns th4t/mwdns
+
 #compile, combine and minify less stylesheets
 less: min_dir
 	lessc -x ${CSS_DIR}/main_start.less ${MIN_DIR}/main_start.min.css
@@ -18,4 +24,4 @@ js: min_dir
 min_dir:
 	mkdir -p ${MIN_DIR}
 
-.PHONY: less js min_dir
+.PHONY: less js min_dir docker_build docker_run
