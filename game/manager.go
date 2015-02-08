@@ -6,7 +6,7 @@ import (
     "time"
     "errors"
 
-    "../utils"
+    "github.com/th4t/mwdns/utils"
 )
 
 const (
