@@ -7,4 +7,4 @@ RUN apt-get update && \
 
 RUN make
 
-CMD ["app", "0.0.0.0:8000"]
+CMD ["app", "--addr", "0.0.0.0:8000"]
