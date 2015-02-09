@@ -9,6 +9,7 @@ import (
     "encoding/json"
     "strconv"
     "fmt"
+    "html"
     "strings"
 )
 
@@ -94,7 +95,8 @@ func (p *Player) Reader() {
                 p.Game.MoveCard(cardpos)
             case "wantChangeName":
                 //TODO: check if this is a name, escape for the sake of all that is paranoid
-                p.Name = v
+                p.Name = html.EscapeString(v)
+
                 p.Game.BroadcastPlayer(p)
             case "wantChangeColor":
                 if col, err := colorful.Hex(v); err != nil {

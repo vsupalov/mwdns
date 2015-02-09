@@ -10,6 +10,7 @@ import (
     "math/rand"
     "strings"
     "time"
+    "html"
 
     "github.com/th4t/mwdns/utils"
 )
@@ -419,7 +420,10 @@ func (g *Game) MoveCard(cardp cardPosition) {
 
 func (g *Game) Chat(pname, msg string) {
     name, _ := json.Marshal(pname)
-    jmsg, _ := json.Marshal(msg)
+
+    escapedMsg := html.EscapeString(msg)
+    jmsg, _ := json.Marshal(escapedMsg)
+
     g.Broadcast(fmt.Sprintf(`{"msg": "chat", "from": %v, "content": %v}`, string(name), string(jmsg)))
 }
 
