@@ -400,8 +400,20 @@ func (g *Game) TryFlip(p *Player, cardid int) {
 
         // gg?
         if g.cardCountLeft == 0 {
+            // find the winner
+            winnerId := p.Id
+            winnerPoints := p.Points
+
+            for e := g.Players.Front(); e != nil; e = e.Next() {
+                player := e.Value.(*Player)
+                if player.Points > winnerPoints { //there can only be one TODO
+                        winnerId = player.Id
+                        winnerPoints = player.Points
+                }
+            }
+
             // TODO: necessary to broadcast more?
-            g.Broadcast(fmt.Sprintf(`{"msg": "end", "winner": "%v"}`, p.Id))
+            g.Broadcast(fmt.Sprintf(`{"msg": "end", "winner": "%v"}`, winnerId))
         }
     }
     g.Broadcast(fmt.Sprintf(`{"msg": "turns", "pid": %v, "turns": %v, "flips": %v}`, p.Id, p.Turns, p.Flips))
