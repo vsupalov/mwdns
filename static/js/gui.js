@@ -161,6 +161,11 @@ Scoreboard.prototype.leaver = function(pid) {
     delete this.players[pid]
 }
 
+Scoreboard.prototype.openHelpPopup = function(winnerid) {
+    // one friendly screen for all occasions!
+    $('#helpPopup').fadeIn()
+}
+
 Scoreboard.prototype.gameOver = function(winnerid) {
     // one friendly screen for all occasions!
     $('#gameOver .name').css('color', this.players[winnerid].color)
