@@ -5,6 +5,7 @@ import (
     "log"
     "time"
     "errors"
+    "net/url"
 
     "github.com/th4t/mwdns/utils"
 )
@@ -25,11 +26,11 @@ func NewGameManager() *GameManager {
     return gm
 }
 
-func (gm *GameManager) CreateNewGame(nCards, gameType, maxPlayers, cardType, cardLayout, cardRotation int) (gameId string) {
+func (gm *GameManager) CreateNewGame(nCards, gameType, maxPlayers, cardType, cardLayout, cardRotation int, creationUrl *url.URL) (gameId string) {
     //TODO: there we want to create a game, but do not really care for the exact id
     //  this might be solved by one single go process, listening for channel requests for new games/for them to be deleted
     gameId = utils.RndString(IDLEN) //TODO: check for collision
-    g := NewGame(nCards, gameType, maxPlayers, cardType, cardLayout, cardRotation)
+    g := NewGame(nCards, gameType, maxPlayers, cardType, cardLayout, cardRotation, creationUrl)
 
     gm.gameMutex.Lock()
     defer gm.gameMutex.Unlock() //this is holding the mutex longer than needed

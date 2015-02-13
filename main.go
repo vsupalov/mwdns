@@ -65,7 +65,7 @@ func gameHandler(w http.ResponseWriter, req *http.Request) {
             http.Redirect(w, req, "/?errmsg="+url.QueryEscape(errmsg), 303)
             return
         }
-        gameTempl.Execute(w, templateStruct) //TODO: insert information on the game parameters into the template?
+        gameTempl.Execute(w, templateStruct)
     }
 }
 
@@ -157,7 +157,7 @@ func tryCreateNewGame(w http.ResponseWriter, req *http.Request) {
         cardRotation = 0
     }
 
-    gameId := gameManager.CreateNewGame(nCards, gameType, maxPlayers, cardType, cardLayout, cardRotation)
+    gameId := gameManager.CreateNewGame(nCards, gameType, maxPlayers, cardType, cardLayout, cardRotation, req.URL)
     http.Redirect(w, req, fmt.Sprintf("/game?g=%v", gameId), 303)
 }
 

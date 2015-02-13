@@ -18,6 +18,10 @@ resizeGui = function() {
     $('#chatMessages').height(guih - msgh - scoreboardh - sendbuttonh - chatmsg_margin - helph)
 }
 
+function setCreationUrl(url) {
+    $('#newGameLink').attr("href", url)
+}
+
 Scoreboard = function(selector) {
     this.node = $(selector)
     this.pid_rows = {}

@@ -30,6 +30,7 @@ function handleMessage(msg){
     if ( json.msg == "initBoard" ) {
         createBoard(json.boardWidth, json.boardHeight, json.maxPlayers)
         createCards(json.cardCount, json.cardType, json.colors)
+        setCreationUrl(json.creationUrl)
     } else if ( json.msg == "cardMove" ) {
         gameCards[json.id].moveTo(json.x, json.y, json.phi)
     } else if ( json.msg == "cardOpen" ) {

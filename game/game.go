@@ -11,6 +11,7 @@ import (
     "strings"
     "time"
     "html"
+    "net/url"
 
     "github.com/th4t/mwdns/utils"
 )
@@ -53,6 +54,8 @@ type Game struct {
     boardHeight int
     cardColors  []colorful.Color
 
+    creationUrl url.URL
+
     registerPlayer         chan *Player
     unregisterPlayer       chan *Player
     incomingPlayerMessages chan string
@@ -62,13 +65,15 @@ type Game struct {
     //TODO: we could save all events to make game replays possible, for fun
 }
 
-func NewGame(cardCount, gameType, maxPlayers, cardType, cardLayout, cardRotation int) *Game {
+func NewGame(cardCount, gameType, maxPlayers, cardType, cardLayout, cardRotation int, creationUrl *url.URL) *Game {
     g := new(Game)
     g.Players.Init()
     g.Type = gameType
     g.MaxPlayers = maxPlayers
     g.Cards = make(map[int]*Card)
     g.cardCountLeft = cardCount
+
+    g.creationUrl = *creationUrl
 
     g.CardType = cardType
 
@@ -462,8 +467,8 @@ func (g *Game) SendInitBoard(p *Player) {
         colorArray = "[]"
     }
 
-    p.send <- fmt.Sprintf(`{"msg": "initBoard", "boardWidth": %v, "boardHeight": %v, "cardCount": %v, "maxPlayers": %v, "cardType": %v, "colors": %v}`,
-        g.boardWidth, g.boardHeight, len(g.Cards), g.MaxPlayers, g.CardType, colorArray)
+    p.send <- fmt.Sprintf(`{"msg": "initBoard", "boardWidth": %v, "boardHeight": %v, "cardCount": %v, "maxPlayers": %v, "cardType": %v, "colors": %v, "creationUrl": "%v"}`,
+        g.boardWidth, g.boardHeight, len(g.Cards), g.MaxPlayers, g.CardType, colorArray, g.creationUrl.String())
 }
 
 func (g *Game) SendAllPlayers(towhom *Player) {
