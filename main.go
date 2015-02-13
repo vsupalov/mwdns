@@ -65,7 +65,7 @@ func gameHandler(w http.ResponseWriter, req *http.Request) {
             http.Redirect(w, req, "/?errmsg="+url.QueryEscape(errmsg), 303)
             return
         }
-        gameTempl.Execute(w, templateStruct)
+        gameTempl.Execute(w, templateStruct) //TODO: insert information on the game parameters into the template?
     }
 }
 
