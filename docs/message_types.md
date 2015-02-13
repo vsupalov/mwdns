@@ -11,12 +11,13 @@ the `colors` array is only non-empty when the server provides the color palette 
 
 ```javascript
 {
-	"msg": "initBoard"
-	"boardWidth": 500
-	"boardHeight": 600
-	"cardCount": 13
-	"maxPlayers": 2
-	"colors": [colorString, ...]
+	"msg": "initBoard",
+	"boardWidth": 500,
+	"boardHeight": 600,
+	"cardCount": 13,
+	"maxPlayers": 2,
+	"colors": [colorString, ...],
+	"creationUrl": "url to create similar game"
 }
 ```
 
