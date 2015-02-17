@@ -21,8 +21,8 @@
 	"id": 20,
 	"name": "Minecraft Tour",
 	"maxPairs": 20,
-	"cardSizeX": 150,
-	"cardSizeY": 150,
+	"cardSizeX": 50,
+	"cardSizeY": 50,
 
 	"type": "tilemap",
 	"fileName": "minecraft_tiles.png",
