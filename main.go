@@ -161,6 +161,14 @@ func tryCreateNewGame(w http.ResponseWriter, req *http.Request) {
     http.Redirect(w, req, fmt.Sprintf("/game?g=%v", gameId), 303)
 }
 
+// https://groups.google.com/forum/#!topic/golang-nuts/n-GjwsDlRco
+func maxAgeHandler(seconds int, h http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        w.Header().Add("Cache-Control", fmt.Sprintf("max-age=%d, public, must-revalidate, proxy-revalidate", seconds))
+        h.ServeHTTP(w, r)
+    })
+}
+
 func main() {
     log.Println("__Initial setup")
     rand.Seed(time.Now().UTC().UnixNano())
@@ -174,7 +182,11 @@ func main() {
     sm := http.NewServeMux()
     sm.HandleFunc("/", homeHandler)
     sm.HandleFunc("/game", gameHandler)
-    sm.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+    // for development, just 1 minute of caching
+    const CACHE_SECONDS = 60
+    sm.Handle("/static/", http.StripPrefix("/static/",
+        maxAgeHandler(CACHE_SECONDS, http.FileServer(http.Dir("static")))))
     sm.Handle("/ws", websocket.Handler(wsHandler))
 
     flag.Parse()
