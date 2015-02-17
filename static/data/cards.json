@@ -3,7 +3,7 @@
 "assetPrefix": "/static/img/assets/",
 "cardImageSources": [
 	{
-	"id": 10,
+	"id": 0,
 	"name": "Armor",
 	"maxPairs": 12,
 	"cardSizeX": 50,
@@ -18,7 +18,7 @@
 	"skipTile": 1
 	},
 	{
-	"id": 20,
+	"id": 1,
 	"name": "Minecraft Tour",
 	"maxPairs": 20,
 	"cardSizeX": 50,
@@ -33,7 +33,7 @@
 	"skipTile": 0
 	},
 	{
-	"id": 30,
+	"id": 2,
 	"name": "Random Colors Square",
 	"maxPairs": 20,
 	"cardSizeX": 50,
@@ -43,7 +43,7 @@
 	"func": "randomDistinctiveHappyColors"
 	},
 	{
-	"id": 31,
+	"id": 3,
 	"name": "Random Colors Portrait",
 	"maxPairs": 20,
 	"cardSizeX": 50,
@@ -53,7 +53,7 @@
 	"func": "randomDistinctiveHappyColors"
 	},
 	{
-	"id": 32,
+	"id": 4,
 	"name": "Distinguishable Colors",
 	"maxPairs": 40,
 	"cardSizeX": 50,
