@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "less": "^4.1.2",
+    "uglify-js": "^3.15.5"
+  }
+}

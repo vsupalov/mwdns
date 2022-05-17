@@ -1,7 +1,7 @@
 package main
 
 import (
-    "code.google.com/p/go.net/websocket"
+    "golang.org/x/net/websocket"
     "flag"
     "fmt"
     "log"
@@ -11,8 +11,8 @@ import (
     "strconv"
     "time"
 
-    "github.com/th4t/mwdns/game"
-    "github.com/th4t/mwdns/utils"
+    "github.com/vsupalov/mwdns/game"
+    "github.com/vsupalov/mwdns/utils"
 )
 
 const (

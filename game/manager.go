@@ -7,7 +7,7 @@ import (
     "errors"
     "net/url"
 
-    "github.com/th4t/mwdns/utils"
+    "github.com/vsupalov/mwdns/utils"
 )
 
 const (

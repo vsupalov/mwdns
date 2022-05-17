@@ -7,10 +7,10 @@ JS_FILES=$(wildcard ${JS_DIR}/*.js)
 all: less js
 
 docker_build:
-	docker build -t th4t/mwdns .
+	docker build -t vsupalov/mwdns .
 
 docker_run:
-	docker run -it --rm --name mwdns th4t/mwdns
+	docker run -it --rm --name mwdns vsupalov/mwdns
 
 #compile, combine and minify less stylesheets
 less: min_dir

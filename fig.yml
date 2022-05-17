@@ -1,5 +1,5 @@
 mwdns:
-  image: th4t/mwdns
+  image: vsupalov/mwdns
   hostname: pairsgame
   domainname: pairsga.me
   ports:
